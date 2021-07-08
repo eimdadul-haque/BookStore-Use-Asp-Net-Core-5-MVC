@@ -1,0 +1,6 @@
+﻿@model int
+
+<div class="btn-group" role="group" >
+    <a   asp-action="Add_Edit" asp-route-id="@Model"  class="btn btn-info">Edit</a>
+    <a onclick="myclick()"  asp-action="Delete" asp-route-id="@Model"  class="btn btn-danger">Delete</a>
+</div>

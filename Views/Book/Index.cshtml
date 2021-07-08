@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Book>
+
+@{
+    ViewData["Title"] = "Book Index";
+}
+
+<div class="container">
+    <div class="row mt-3 mb-3">
+        <div class="col-6 text-left">
+            <p class="h3">Book List</p>
+        </div>
+        <div class="col-6 text-lg-right">
+            <a asp-controller="Book" asp-action="AddAndEdit" class="btn btn-info" >&dagger; Add Book</a>
+        </div>
+    </div>
+</div>
+<div class="container text-center">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(c => c.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.Author)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.language)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.TotalPage)
+                </th>
+                <th>
+                    Manage
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>@item.Author</td>
+                        <td>@item.Description</td>
+                        <td>@item.category</td>
+                        <td>@item.language</td>
+                        <td>@item.TotalPage</td>
+                        <td> <partial name="_ButtonGroup" model="@item.Id" /> </td>
+                    </tr>
+
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+@section Scripts{
+    <script>
+        function myclick() {
+            window.alert("Confirm")
+        }
+    </script>
+}

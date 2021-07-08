@@ -1,0 +1,26 @@
+﻿@model Category
+
+@{
+    if (Model != null)
+    {
+        ViewData["Title"] = "Cataory | Edit";
+    }
+    else
+    {
+        ViewData["Title"] = "Cataory | Add";
+    }
+}
+
+<div class="container">
+    <form method="post">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="form-group">
+            <label asp-for="category"></label>
+            <input asp-for="category"/>
+            <span asp-validation-for="category"></span>
+        </div>
+        <div>
+            <input type="submit"/>
+        </div>
+    </form>
+</div>

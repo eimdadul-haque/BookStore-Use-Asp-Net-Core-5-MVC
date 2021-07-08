@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore Use Asp Net Core 5 MVC", "BookStore Use Asp Net Core 5 MVC.csproj", "{56F3DA09-26FA-4540-8524-8C09F1522C3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStore  Asp Net Core 5 MVC", "BookStore  Asp Net Core 5 MVC.csproj", "{56F3DA09-26FA-4540-8524-8C09F1522C3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
