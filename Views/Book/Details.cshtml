@@ -4,30 +4,27 @@
     ViewData["Title"] = "Book Details";
 }
 
-<div class="bg-secondary jumbotron">
-    <div>Book Details</div>
-</div>
 
-<div class="container">
+<div class="container mt-5">
     <div class="row border-bottom">
-        <div class="col-lg-6 col-md-6 col-sm-6">
-            <img src="~/Image/182950397_128495512669580_4940680657695438542_n.jpg" height="400px" width="100%" />
+        <div class="col-lg-6 col-md-6 col-sm-6 mb-2">
+            <img class="w-100 rounded" src="~/image/@Model.ImgeUrl[0].ImageName" height="400px" />
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="col-lg-6 col-md-6 col-sm-6 mb-2">
             <div class="border-bottom mb-2">
                 <span class="h4">@Model.Title</span>
                 <span style="display: block">By <span class="text-info"> @Model.Author</span></span>
                 <div class="mt-2 mb-1">@Model.Description</div>
-                <a class="btn-sm btn btn-outline-info text-info mb-2">Read Now</a>
+                <a href="~/pdf/@Model.PdfName" class="btn-sm btn btn-outline-info text-info mb-2">Read Now</a>
             </div>
             <div class="card" style="width: 100%;">
                 <div class="card-header">
                     Featured
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">@Model.category</li>
-                    <li class="list-group-item">@Model.language</li>
-                    <li class="list-group-item">@Model.TotalPage</li>
+                    <li class="list-group-item"><i class="fa fa-sign-language"></i> @Model.category.category</li>
+                    <li class="list-group-item"><i class="fa fa-sign-language"></i> Language: @Model.language.language</li>
+                    <li class="list-group-item"><i class="fa fa-solar-panel"></i> Total Page: @Model.TotalPage</li>
                 </ul>
             </div>
         </div>

@@ -17,12 +17,11 @@
                             <p class="card-text">@item.Description</p>
                             <div class="row d-flex justify-content-between">
                                 <div class="col-6">
-                                    <a href="#" class="btn btn-primary">Details</a>
+                                    <a asp-controller="Book" asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
                                 </div>
                                 <div class="col-6 text-lg-right">
                                     <small><b>Author:</b> <span class="text-warning">@item.Author</span></small>
                                 </div>
-
                             </div>
                         </div>
                     </div>
