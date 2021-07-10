@@ -1,0 +1,66 @@
+﻿@model Book
+@inject BookStore_Use_Asp_Net_Core_5_MVC.IRepository.ILanguageRepository _repoLanguage
+@inject BookStore_Use_Asp_Net_Core_5_MVC.IRepository.ICategoryRepository _repoCategory
+@inject BookStore_Use_Asp_Net_Core_5_MVC.IRepository.IBookRepository _repoBook
+
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-6 col-md-12 col-sm-12 text-left">
+            <img class="w-100" src="~/assets/undraw_Forms_re_pkrt.svg" />
+        </div>
+
+        <div class="col-lg-6 col-md-12 col-sm-12 text-left">
+            <div class="bg-light mb-3 p-2 text-center">
+                <p>Add a new book...</p>
+            </div>
+            <form asp-controller="Book" asp-action="Add_Edit" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <input class="form-control" placeholder="Title" asp-for="Title" />
+                    <span class="text-danger" asp-validation-for="Title"></span>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" placeholder="Author Name" asp-for="Author" />
+                    <span class="text-danger" asp-validation-for="Author"></span>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" placeholder="Description" asp-for="Description" />
+                    <span class="text-danger" asp-validation-for="Description"></span>
+                </div>
+                <div class="form-group">
+                    <select asp-for="categoryId" class="form-control" asp-items="(await _repoCategory.GetAll()).Select(x=> new SelectListItem() {Text = x.category, Value = x.Id.ToString() })">
+                        <option value="">Category</option>
+                    </select>
+                    <span class="text-danger" asp-validation-for="categoryId"></span>
+                </div>
+                <div class="form-group">
+                    <select asp-for="languageId" class="form-control" asp-items="(await _repoLanguage.GetAll()).Select(x=> new SelectListItem() {Text = x.language, Value = x.Id.ToString() })">
+                        <option value="">Language</option>
+                    </select>
+                    <span class="text-danger" asp-validation-for="languageId"></span>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" placeholder="Total Page" asp-for="TotalPage" />
+                    <span class="text-danger" asp-validation-for="TotalPage"></span>
+                </div>
+                <div class="row form-group">
+                    <div class="col-6">
+                        <label>Cover Photo</label>
+                        <input class="form-control-file" asp-for="ImageFile" />
+                        <span class="text-danger" asp-validation-for="ImageFile"></span>
+                    </div>
+                    <div class="col-6">
+                        <label>Pdf Book</label>
+                        <input class="form-control-file" asp-for="BookPDF" />
+                        <span class="text-danger" asp-validation-for="BookPDF"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input class="form-control btn-outline-info" type="submit" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

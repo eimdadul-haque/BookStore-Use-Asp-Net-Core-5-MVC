@@ -20,23 +20,26 @@ namespace BookStore_Use_Asp_Net_Core_5_MVC.Models
         public string Title { get; set; }
 
         public string Description { get; set; }
-        
-        public int categoryId { get; set; }
+
         [Required]
+        public int categoryId { get; set; }
         [ForeignKey("categoryId")]
         public Category category { get; set; }
 
-
-        public int languageId { get; set; }
         [Required]
+        public int languageId { get; set; }
         [ForeignKey("languageId")]
         public Language language { get; set; }
 
         [Display(Name ="Total Page")]
         public int TotalPage { get; set; }
 
-        public DateTime LastUpdate { get; set; } = DateTime.UtcNow;
+        public DateTime LastUpdate { get; set; } = DateTime.Now;
 
+        public string PdfName { get; set; }
+        [NotMapped]
+        [Required]
+        public IFormFile BookPDF { get; set; }
 
         public List<ImageGallary> ImgeUrl { get; set; }
         [NotMapped]

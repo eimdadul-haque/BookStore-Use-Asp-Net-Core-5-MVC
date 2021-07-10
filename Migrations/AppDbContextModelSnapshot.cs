@@ -36,6 +36,9 @@ namespace BookStore_Use_Asp_Net_Core_5_MVC.Migrations
                     b.Property<DateTime>("LastUpdate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("PdfName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -81,7 +84,7 @@ namespace BookStore_Use_Asp_Net_Core_5_MVC.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("BookId")
+                    b.Property<int>("BookId")
                         .HasColumnType("int");
 
                     b.Property<string>("ImageName")
@@ -91,7 +94,7 @@ namespace BookStore_Use_Asp_Net_Core_5_MVC.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.ToTable("ImageGallary");
+                    b.ToTable("imageGallaries");
                 });
 
             modelBuilder.Entity("BookStore_Use_Asp_Net_Core_5_MVC.Models.Language", b =>
@@ -131,9 +134,13 @@ namespace BookStore_Use_Asp_Net_Core_5_MVC.Migrations
 
             modelBuilder.Entity("BookStore_Use_Asp_Net_Core_5_MVC.Models.ImageGallary", b =>
                 {
-                    b.HasOne("BookStore_Use_Asp_Net_Core_5_MVC.Models.Book", null)
+                    b.HasOne("BookStore_Use_Asp_Net_Core_5_MVC.Models.Book", "book")
                         .WithMany("ImgeUrl")
-                        .HasForeignKey("BookId");
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("book");
                 });
 
             modelBuilder.Entity("BookStore_Use_Asp_Net_Core_5_MVC.Models.Book", b =>

@@ -10,7 +10,7 @@
             <p class="h3">Book List</p>
         </div>
         <div class="col-6 text-lg-right">
-            <a asp-controller="Book" asp-action="AddAndEdit" class="btn btn-info" >&dagger; Add Book</a>
+            <a asp-controller="Book" asp-action="Add_Edit" class="btn btn-info" >&dagger; Add Book</a>
         </div>
     </div>
 </div>
@@ -49,8 +49,8 @@
                         <td>@item.Title</td>
                         <td>@item.Author</td>
                         <td>@item.Description</td>
-                        <td>@item.category</td>
-                        <td>@item.language</td>
+                        <td>@item.category.category</td>
+                        <td>@item.language.language</td>
                         <td>@item.TotalPage</td>
                         <td> <partial name="_ButtonGroup" model="@item.Id" /> </td>
                     </tr>

@@ -1,9 +1,33 @@
-﻿@{
+﻿@model IEnumerable<Book>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<div class="container">
+    <div class="row">
+        @{
+            foreach (var item in Model)
+            {
+                <div class="col-4">
+                    <div class="card" style="width: 100%;">
+                        <img src="~/image/@item.ImgeUrl[0].ImageName" class="card-img-top" />
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Title</h5>
+                            <p class="card-text">@item.Description</p>
+                            <div class="row d-flex justify-content-between">
+                                <div class="col-6">
+                                    <a href="#" class="btn btn-primary">Details</a>
+                                </div>
+                                <div class="col-6 text-lg-right">
+                                    <small><b>Author:</b> <span class="text-warning">@item.Author</span></small>
+                                </div>
 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

@@ -16,7 +16,8 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\assets\" />
-    <Folder Include="wwwroot\Image\" />
+    <Folder Include="wwwroot\image\default\" />
+    <Folder Include="wwwroot\pdf\" />
   </ItemGroup>
 
 </Project>

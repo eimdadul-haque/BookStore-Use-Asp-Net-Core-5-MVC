@@ -1,4 +1,5 @@
-﻿using BookStore_Use_Asp_Net_Core_5_MVC.Models;
+﻿using BookStore_Use_Asp_Net_Core_5_MVC.IRepository;
+using BookStore_Use_Asp_Net_Core_5_MVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,15 +13,17 @@ namespace BookStore_Use_Asp_Net_Core_5_MVC.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IBookRepository _repo;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IBookRepository repo)
         {
             _logger = logger;
+            _repo = repo;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await _repo.GetAll());
         }
 
         public IActionResult Privacy()

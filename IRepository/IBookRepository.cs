@@ -6,9 +6,10 @@ namespace BookStore_Use_Asp_Net_Core_5_MVC.IRepository
 {
     public interface IBookRepository
     {
-        Task<int> AddBookAndEdit(Book book);
-        Task<bool> DeleteBook(int? id);
-        Task<List<Book>> GetAllBook();
-        Task<Book> GetOneBook(int? id);
+        Task<int> Add(Book book);
+        Task<bool> Delete(int? id);
+        Task<int> Edit(Book book);
+        Task<List<Book>> GetAll();
+        Task<Book> GetOne(int? id);
     }
 }

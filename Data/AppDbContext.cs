@@ -18,6 +18,7 @@ namespace BookStore_Use_Asp_Net_Core_5_MVC.Data
         public DbSet<Book> books { get; set; }
         public DbSet<Category> categories { get; set; }
         public DbSet<Language> languages { get; set; }
+        public DbSet<ImageGallary> imageGallaries { get; set; }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
