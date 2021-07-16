@@ -31,7 +31,7 @@ namespace BookStore_Use_Asp_Net_Core_5_MVC.Repository
 
         public async Task<int> Add(Book book)
         {
-            book.PdfName = await FileHandle(book.BookPDF.FileName, "pdf", book.BookPDF);
+            book.PdfName = await FileHandle( "pdf", book.BookPDF);
             await _db.books.AddAsync(book);
             await _db.SaveChangesAsync();
             _db.Entry(book).GetDatabaseValues();
@@ -109,7 +109,7 @@ namespace BookStore_Use_Asp_Net_Core_5_MVC.Repository
             {
                 foreach (var file in book_.ImageFile)
                 {
-                    string fileName = await FileHandle(book_.BookPDF.FileName, "image", book_.BookPDF);
+                    string fileName = await FileHandle("image", file);
 
                     if (IsUpdate == true)
                     {
@@ -169,16 +169,17 @@ namespace BookStore_Use_Asp_Net_Core_5_MVC.Repository
             return false;
         }
 
-        public async Task<string> FileHandle(string FileName, string dir, IFormFile file)
+        public async Task<string> FileHandle(string dir, IFormFile file)
         {
-            string fileName = Path.GetFileNameWithoutExtension(FileName);
-            string fileExtention = Path.GetExtension(FileName);
+            string fileName = Path.GetFileNameWithoutExtension(file.FileName);
+            string fileExtention = Path.GetExtension(file.FileName);
             fileName = fileName + DateTime.Now.ToString("dd-MM-yyyy_HH-mm-ss") + fileExtention;
             string path = Path.Combine(_env.WebRootPath, dir, fileName);
             using (var fileStrem = new FileStream(path, FileMode.Create))
             {
                 await file.CopyToAsync(fileStrem);
             }
+
             return fileName;
         }
 

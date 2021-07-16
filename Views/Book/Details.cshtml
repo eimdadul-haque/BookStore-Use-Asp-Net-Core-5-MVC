@@ -5,20 +5,20 @@
 }
 
 
-<div class="container mt-5">
-    <div class="row border-bottom">
-        <div class="col-lg-6 col-md-6 col-sm-6 mb-2">
+<div class="container mt-3">
+    <div class="row border-bottom shadow rounded">
+        <div class="col-lg-6 col-md-6 col-sm-6 mb-2 mt-2">
             <img class="w-100 rounded" src="~/image/@Model.ImgeUrl[0].ImageName" height="400px" />
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 mb-2">
-            <div class="border-bottom mb-2">
+            <div class="border-bottom border-info mb-2">
                 <span class="h4">@Model.Title</span>
                 <span style="display: block">By <span class="text-info"> @Model.Author</span></span>
                 <div class="mt-2 mb-1">@Model.Description</div>
-                <a href="~/pdf/@Model.PdfName" class="btn-sm btn btn-outline-info text-info mb-2">Read Now</a>
+                <a target="_blank" href="~/pdf/@Model.PdfName" class="btn-sm btn btn-outline-warning mb-2">Read Now</a>
             </div>
             <div class="card" style="width: 100%;">
-                <div class="card-header">
+                <div class="card-header text-danger">
                     Featured
                 </div>
                 <ul class="list-group list-group-flush">
@@ -28,5 +28,25 @@
                 </ul>
             </div>
         </div>
+    </div>
+
+    <div class="row ">
+
+        @{
+            for (int i = 0; i<4; i++)
+            {
+                <div class="col-3 mt-2">
+                    <div class="card shadow" style="width: 100%;">
+                        <img src="~/assets/undraw_Forms_re_pkrt.svg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build .</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
     </div>
 </div>
