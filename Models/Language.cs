@@ -16,4 +16,3 @@ namespace BookStore_Use_Asp_Net_Core_5_MVC.Models
         public string language { get; set; }
     }
 }
-
